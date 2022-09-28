@@ -1,30 +1,92 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="page-container">
+    <SdlcSidebar />
+    <div class="routerView" :class="theme">
+      <router-view />
+    </div>
+  </div>
 </template>
 
+<script>
+import SdlcSidebar from "./components/SdlcSidebar.vue";
+import fileCollection from "raw-loader!./assets/db.csv";
+import store from "./store";
+
+export default {
+  name: "App",
+  components: {
+    SdlcSidebar,
+  },
+  computed: {
+    theme(){
+      return this.$store.state.theme;
+    }
+  },
+  mounted() {
+    var lines = fileCollection.split("\n");
+    var result = [];
+    var headers = lines[0].split(";");
+
+    for (var i = 1; i < lines.length; i++) {
+      var obj = {};
+      var currentline = lines[i].split(";");
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+    }
+    store.commit("setJson", result);
+  },
+};
+</script>
+
 <style>
+body {
+  margin: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Outfit", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background: #181818;
+  min-height: 100vh;
+}
+
+h2{
+  font-weight: 400;
 }
 
 nav {
   padding: 30px;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.page-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.routerView {
+  box-sizing: border-box;
+  margin-left: 250px;
+  background: rgb(44, 44, 44);
+  color: white;
+  width: 100%;
+  padding: 0px;
+  height: 100vh;
+}
+
+.routerView.light {
+  background: white;
+  color: #181818;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 </style>

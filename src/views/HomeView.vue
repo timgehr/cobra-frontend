@@ -1,18 +1,152 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <svg
+    class="SDLC svg"
+      version="1.1"
+      viewBox="0.0 0.0 660.8976377952756 653.49343832021"
+      fill="none"
+      stroke="none"
+      stroke-linecap="square"
+      stroke-miterlimit="10"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <clipPath id="p.0">
+        <path
+          d="m0 0l660.89764 0l0 653.4934l-660.89764 0l0 -653.4934z"
+          clip-rule="nonzero"
+        />
+      </clipPath>
+      <g clip-path="url(#p.0)" class="SDLC mainGroup">
+        <path
+          fill="#000000"
+          fill-opacity="0.0"
+          d="m0 0l660.89764 0l0 653.4934l-660.89764 0z"
+          fill-rule="evenodd"
+        />
+        <path
+          class="purple"
+          fill="#8e7cc3"
+          d="m54.846603 237.44116l0 0c38.732628 -119.48102 150.04213 -200.3956 275.6444 -200.37512l-0.023620605 144.85826c-62.801147 -0.010238647 -118.45589 40.447052 -137.8222 100.18758z"
+          fill-rule="evenodd"
+        />
+        <g class="teal">
+          <path
+            class="tealChild"
+            fill="#76a5af"
+            d="m160.62537 561.4643l0 0c-101.7513 -73.6301 -144.46913 -204.43799 -105.785515 -323.9298l137.81104 44.61418c-19.341812 59.74591 2.017105 125.14984 52.892746 161.96487z"
+            fill-rule="evenodd"
+          />
+          <path
+            class="tealChild"
+            fill="#76a5af"
+            d="m54.646152 237.70102l82.29921 -18.913391l55.46457 63.7323z"
+            fill-rule="evenodd"
+          />
+        </g>
+        <g class="green">
+          <path
+            class="greenChild"
+            fill="#93c47d"
+            d="m501.17014 560.8137l0 0c-101.48282 73.99597 -239.08667 74.17261 -340.75916 0.43756104l85.03937 -117.25986c50.836243 36.867523 119.63818 36.779205 170.37958 -0.21878052z"
+            fill-rule="evenodd"
+          />
+          <path
+            class="greenChild"
+            fill="#93c47d"
+            d="m161.2185 562.33484l7.228348 -83.98428l77.52756 -33.08661z"
+            fill-rule="evenodd"
+          />
+        </g>
+        <g class="yellow">
+          <path
+            class="yellowChild"
+            fill="#ffe599"
+            d="m605.8478 236.70149l0 0c39.029663 119.38472 -3.312622 250.3207 -104.85538 324.24695l-85.25983 -117.11023c50.771362 -36.963104 71.942505 -102.43109 52.427673 -162.12347z"
+            fill-rule="evenodd"
+          />
+          <path
+            class="yellowChild"
+            fill="#ffe599"
+            d="m502.16672 560.52106l-77.57483 -32.86615l-7.5905457 -83.88977z"
+            fill-rule="evenodd"
+          />
+        </g>
+        <g class="red">
+          <path
+            class="redChild"
+            fill="#e06666"
+            d="m329.92404 37.036884l0 0c125.61685 -0.22977448 237.07413 80.50876 276.01035 199.93912l-137.74017 44.905502c-19.46811 -59.715164 -75.19675 -100.08443 -138.00516 -99.96954z"
+            fill-rule="evenodd"
+          />
+          <path
+            class="redChild"
+            fill="#e06666"
+            d="m605.52826 235.92142l-55.385864 63.795258l-82.346436 -18.91336z"
+            fill-rule="evenodd"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "HomeView",
+  components: {},
+  methods: {
+    delayRoute: () => {
+      setTimeout(() => this.$router.push({ path: "/login" }), 1000);
+    },
+  },
+};
 </script>
+
+<style>
+.red:hover .redChild {
+  cursor: pointer;
+  fill: #f35454;
+}
+.red:hover {
+  filter: drop-shadow(0px 0px 8px #ec7070);
+}
+
+.teal:hover .tealChild {
+  cursor: pointer;
+  fill: #48a6bb;
+}
+.teal:hover {
+  filter: drop-shadow(0px 0px 8px #7ee3fa);
+}
+.yellow:hover .yellowChild {
+  cursor: pointer;
+  fill: #ffd75f;
+}
+.yellow:hover {
+  filter: drop-shadow(0px 0px 8px #ffe391);
+}
+
+.green:hover .greenChild {
+  cursor: pointer;
+  fill: #7dc45e;
+}
+.green:hover {
+  filter: drop-shadow(0px 0px 8px #b6fa99);
+}
+
+.purple:hover {
+  cursor: pointer;
+  fill: #7c5fd3;
+  filter: drop-shadow(0px 0px 8px #a78fee);
+}
+
+.SDLC.svg{
+  max-height: 800px;
+  box-sizing: content-box;
+  padding: 50px;
+}
+
+.SDLC.mainGroup{
+}
+</style>

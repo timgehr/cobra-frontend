@@ -1,0 +1,16 @@
+<svg id="OPP-5735_Logo_CMYK" xmlns="http://www.w3.org/2000/svg" width="44.952" height="114.163"
+  viewBox="0 0 44.952 114.163" class="opportune-logo-short">
+  <g id="Group_80" data-name="Group 80" transform="translate(0 0)">
+    <g id="Group_79" data-name="Group 79" transform="translate(0 34.567)">
+      <path id="Path_211" data-name="Path 211"
+        d="M96.141,81.868a20.368,20.368,0,0,0-5.58-2.17,22.671,22.671,0,0,0-11.161,0v5.5h0v.078a16.213,16.213,0,0,1,5.58-.93c9.611,0,16.741,7.44,16.741,17.051,0,9.688-7.13,17.051-16.741,17.051a16.864,16.864,0,0,1-5.58-.93v5.658a22.491,22.491,0,0,0,16.741-41.31Z"
+        transform="translate(-62.504 -79)" fill="#fff" />
+      <path id="Path_212" data-name="Path 212"
+        d="M57.6,102.331A22.108,22.108,0,0,0,68.916,121.94V115.2a17.792,17.792,0,0,1,0-25.731V82.8A21.894,21.894,0,0,0,57.6,102.331Z"
+        transform="translate(-57.6 -79.855)" fill="#fff" />
+    </g>
+    <path id="Path_213" data-name="Path 213"
+      d="M94.521,71.834V34.4L72.2,56.8v91.765l22.321-22.321V111.129a20.367,20.367,0,0,1-5.58,2.17V123.84L77.858,134.923v-75.8L88.941,48.041v21.7A20.19,20.19,0,0,1,94.521,71.834Z"
+      transform="translate(-60.884 -34.4)" fill="#fff" opacity="0.8" />
+  </g>
+</svg>
