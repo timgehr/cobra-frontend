@@ -1,11 +1,10 @@
 <template>
   <div class="fileList" :class="theme">
+      {{ beopis }}
     <div class="fileListHeader">
       <span class="name title">File Name</span>
       <span class="client title">Client</span>
-      <span class="description title"
-        >Description</span
-      >
+      <span class="description title">Description</span>
     </div>
     <li
       class="fileListItem {{row.Type}}"
@@ -36,7 +35,7 @@
 import store from "../store";
 import TypeTag from "./table/TypeTag.vue";
 export default {
-  props: ["cycleName"],
+  props: ["cycleName", "filters"],
   components: {
     TypeTag,
   },
@@ -50,19 +49,30 @@ export default {
     },
   },
   computed: {
-    tableData() { 
-      console.log(store.state.filesData.filter(
-        (i) => i.Area === "SDLC" && i.Stage === this.cycleName
-      ))
-      return store.state.filesData.filter(
-        (i) => i.Area === "SDLC" && i.Stage === this.cycleName
-      );
+    tableData() {
+      return store.state.filesData
+        .filter(
+          (i) =>
+            (i.Name
+              ? i.Name.toLowerCase().includes(this.filters.searchText.toLowerCase())
+              : null) ||
+            (i.Client
+              ? i.Client.toLowerCase().includes(this.filters.searchText.toLowerCase())
+              : null)
+        )
+        .filter((i) =>
+          (this.filters.type.Example ? i.Type === "Example" : i.Type !== "Example") ||
+          (this.filters.type.Template ? i.Type === "Template" : i.Type !== "Template")
+        );
     },
     theme() {
       return this.$store.state.theme;
     },
     chevron() {
       return this.$store.state.preview ? "chevron_right" : "chevron_left";
+    },
+    beopis() {
+      return ""
     },
   },
 };
@@ -81,7 +91,7 @@ export default {
   position: relative;
   box-sizing: border-box;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   height: 100%;
   padding: 50px 20px 50px 50px;
   z-index: 4;
@@ -162,15 +172,14 @@ export default {
   text-overflow: ellipsis;
 }
 
-.fileListItem:hover .cell{
+.fileListItem:hover .cell {
   background: #141414;
   /* max-height: 66px; */
 }
 
-.name.cell{
+.name.cell {
   max-width: 300px;
 }
-
 
 .client.cell {
   min-width: 200px;
@@ -215,7 +224,7 @@ export default {
   overflow: hidden;
 }
 
-.panelSidePadding{
+.panelSidePadding {
   position: absolute;
   right: 0px;
   width: 20px;

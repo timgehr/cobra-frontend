@@ -1,5 +1,5 @@
 <template>
-  <div :class="['typeTag', type, theme]">
+  <div :class="['typeTag', type, theme, onOrOff]">
     <h4>{{ type }}</h4>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 import store from "@/store";
 export default {
-  props: ["type"],
+  props: ["type", "onOrOff"],
   computed: {
     theme() {
       return store.state.theme;
@@ -24,7 +24,7 @@ export default {
   animation-fill-mode: backwards;
   overflow: hidden;
   transition: 0.2s;
-  /* width: 14px;
+  /* width: 52px;
   border-radius: 14px;
   color: transparent;
   margin-left: 0px; */
@@ -32,6 +32,7 @@ export default {
   min-width: 52px;
   color: black;
   border-radius: 3px;
+  width: 52px;
 }
 .typeTag.light {
   color: white;
@@ -51,7 +52,7 @@ export default {
   background: rgb(224, 205, 26);
 }
 
-.fileList.light .typeTag.Example {
+.typeTag.Example.light {
   background: rgb(201, 169, 26);
 }
 
