@@ -10,7 +10,7 @@
             v-model="filters.searchText"
           />
         </div>
-        <div class="filterButton" @click="filterOpen = !filterOpen">
+        <div class="filterButton" :class="theme" @click="filterOpen = !filterOpen">
           <span class="material-symbols-outlined"> filter_alt </span>
         </div>
       </div>
@@ -85,6 +85,10 @@ export default {
   height: fit-content;
 }
 
+.searchGroup{
+  padding-bottom: 10px;
+}
+
 .filterButton {
   height: 42px;
   width: 42px;
@@ -97,6 +101,10 @@ export default {
   border-radius: 6px;
   cursor: pointer;
   user-select: none;
+}
+
+.filterButton.dark{
+  background: rgb(34, 34, 34);
 }
 
 .typeTagGroup {

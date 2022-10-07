@@ -11,7 +11,7 @@ export default {
     fileSrc(newValue) {
       if (store.state.selectedFile !== null) { // eslint-disable-line
         var preview = new Box.Preview(); // eslint-disable-line
-        preview.show(newValue, "M7Vf7ZUN23cosf089BVq2V8s9RaKxZpW", { // eslint-disable-line
+        preview.show(newValue, "oumR6QOEYbmBtswl9ShapbFTFNQ1bauY", { // eslint-disable-line
           container: ".boxPreview", // eslint-disable-line
           showDownload: true, // eslint-disable-line
         }); // eslint-disable-line

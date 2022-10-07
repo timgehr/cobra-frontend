@@ -49,15 +49,11 @@ export default {
 } */
 
 .typeTag.Example {
-  background: rgb(224, 205, 26);
-}
-
-.typeTag.Example.light {
-  background: rgb(201, 169, 26);
+  background: rgb(183, 140, 45);
 }
 
 .typeTag.Template {
-  background: rgb(17, 143, 216);
+  background: rgb(42, 73, 130);
 }
 
 .typeTag h4 {

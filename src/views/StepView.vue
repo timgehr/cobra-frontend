@@ -59,7 +59,7 @@ export default {
     showHidePreview: () => {
       store.commit("showPreview")
     },
-  }
+  },
 };
 </script>
 

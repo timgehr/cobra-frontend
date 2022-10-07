@@ -13,27 +13,30 @@
       />
       <h3>Project Cobra</h3>
     </div>
+    <router-link to="/flows">
+      <SideBarTab name="Process Flows" icon="schema" />
+    </router-link>
+    <router-link to="/search">
+      <SideBarTab name="Search" icon="search" />
+    </router-link>
     <router-link to="/scoping-and-planning">
-      <SdlcTab name="Scoping & Planning" icon="manage_search" />
+      <SideBarTab name="Scoping & Planning" icon="manage_search" />
     </router-link>
     <router-link to="/solution-design">
-      <SdlcTab name="Solution Design" icon="architecture" />
+      <SideBarTab name="Solution Design" icon="architecture" />
     </router-link>
     <router-link to="/configure-and-build">
-      <SdlcTab
+      <SideBarTab
         name="Configure & Build"
         icon="build"
         link="/scoping-and-planning"
       />
     </router-link>
     <router-link to="/testing-and-validation">
-      <SdlcTab name="Testing & Validation" icon="fact_check" />
+      <SideBarTab name="Testing & Validation" icon="fact_check" />
     </router-link>
     <router-link to="/deploy">
-      <SdlcTab name="Deploy" icon="rocket_launch" />
-    </router-link>
-    <router-link to="/search">
-      <SdlcTab name="Search" icon="search" />
+      <SideBarTab name="Deploy" icon="rocket_launch" />
     </router-link>
     <div v-on:click="switchTheme" class="switchTheme">
         <span class="material-symbols-outlined" :class="theme"> {{theme}}_mode </span>
@@ -42,11 +45,11 @@
 </template>
 
 <script>
-import SdlcTab from "./SdlcTab.vue";
 import store from "@/store";
+import SideBarTab from "./SideBarTab.vue";
 
 export default {
-  components: { SdlcTab },
+  components: { SideBarTab },
   computed: {
     theme() {
       return store.state.theme;

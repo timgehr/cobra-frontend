@@ -1,6 +1,5 @@
 <template>
   <div class="fileList" :class="theme">
-      {{ beopis }}
     <div class="fileListHeader">
       <span class="name title">File Name</span>
       <span class="client title">Client</span>
@@ -20,13 +19,10 @@
       <h2 class="description cell">
         {{ row.Description }}
       </h2>
-      <a :href="row.Link"
+      <a :href="row.Link" class="boxLink"
         ><span class="material-symbols-outlined"> link </span>
       </a>
     </li>
-    <div class="showPreviewButton" v-on:click="showHidePreview">
-      <span class="material-symbols-outlined"> {{ chevron }} </span>
-    </div>
     <div class="panelSidePadding"></div>
   </div>
 </template>
@@ -34,11 +30,12 @@
 <script>
 import store from "../store";
 import TypeTag from "./table/TypeTag.vue";
+
 export default {
   props: ["cycleName", "filters"],
   components: {
     TypeTag,
-  },
+},
   methods: {
     setSelectedPreview: (row) => {
       store.commit("setSelectedFile", row);
@@ -71,79 +68,12 @@ export default {
     chevron() {
       return this.$store.state.preview ? "chevron_right" : "chevron_left";
     },
-    beopis() {
-      return ""
-    },
   },
 };
 </script>
 
 <style>
-.fileListHeader {
-  margin: 6px 0px 0px 65px;
-  text-align: left;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-}
-
-.fileList {
-  position: relative;
-  box-sizing: border-box;
-  display: block;
-  overflow: scroll;
-  height: 100%;
-  padding: 50px 20px 50px 50px;
-  z-index: 4;
-  background: rgb(44, 44, 44);
-}
-
-.fileList.light {
-  background: rgb(255, 255, 255);
-}
-
-.fileList.light .cell {
-  background: rgb(240, 240, 240);
-  color: #141414;
-}
-
-.fileList.light .fileListItem:hover .cell {
-  background: rgb(223, 223, 223);
-  color: #141414;
-}
-
-.fileListHeader .title {
-  min-width: 300px;
-  margin: 0px 3px 0px 3px;
-  padding: 0px 10px;
-  color: rgb(179, 179, 179);
-}
-.client.title {
-  min-width: 200px;
-}
-
-.fileListItem a {
-  color: rgb(255, 255, 255);
-  background: #0061d5;
-  border-radius: 4px;
-  height: 33px;
-  margin-left: 3px;
-  overflow: hidden;
-  transition: 0.1s;
-  width: 0px;
-  margin-right: 43px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.fileListItem:hover a {
-  width: 33px;
-  margin-right: 40px;
-}
-
-.fileListItem {
+  .fileListItem {
   margin: 6px 0px 0px 0px;
   text-align: left;
   list-style-type: none;
@@ -151,6 +81,7 @@ export default {
   align-items: center;
   cursor: pointer;
   height: fit-content;
+  position: relative;
 }
 
 .cell {
@@ -170,11 +101,6 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.fileListItem:hover .cell {
-  background: #141414;
-  /* max-height: 66px; */
 }
 
 .name.cell {
@@ -232,5 +158,21 @@ export default {
   height: 100%;
   background: inherit;
   z-index: 2;
+}
+
+.boxLink {
+  color: rgb(255, 255, 255);
+  background: #0061d5;
+  border-radius: 4px;
+  height: 33px;
+  margin-left: 3px;
+  overflow: hidden;
+  transition: 0.1s;
+  width: 0px;
+  margin-right: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 </style>

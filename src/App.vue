@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <SdlcSidebar />
+    <SideBar />
     <div class="routerView" :class="theme">
       <router-view />
     </div>
@@ -8,14 +8,18 @@
 </template>
 
 <script>
-import SdlcSidebar from "./components/SdlcSidebar.vue";
+import SideBar from "./components/SideBar.vue";
 import fileCollection from "raw-loader!./assets/db.csv";
 import store from "./store";
 
 export default {
   name: "App",
   components: {
-    SdlcSidebar,
+    SideBar,
+  }, 
+  created() { 
+    //var theme = this.$cookies.get("theme")
+    //store.commit(theme  ? theme : "light")
   },
   computed: {
     theme(){

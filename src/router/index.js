@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StepView from '../views/StepView.vue'
 import SearchView from '../views/SearchView.vue'
+import FlowView from '../views/FlowView.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: SearchView,
+  },
+  {
+    path: '/flows',
+    name: 'Process Flows',
+    component: FlowView,
   },
 ]
 

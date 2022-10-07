@@ -3,28 +3,37 @@
     <div class="fileListHeader">
       <span class="name title">File Name</span>
       <span class="client title">Client</span>
-      <span class="description title"
-        >Description</span
-      >
+      <span class="description title">Description</span>
     </div>
-    <li
-      class="fileListItem"
-      :class="row.Type"
+    <li class="fileListItemContainer"
       tabindex="1"
       :key="row"
       v-for="row in tableData"
-      @click="setSelectedPreview(row)"
       :ref="row"
     >
+      <div v-if="row.Type === 'Template'" @click="showHideExamples(row.Parent)" class="ShowHideExamples">
+        <span class="material-symbols-outlined"> {{!showExamples.includes(row.Parent) ? "expand_more" : "expand_less"}} </span>
+      </div>
+      <div class="fileListItem"
+      @click="setSelectedPreview(row)"
+      :class="row.Type">
+      <div v-if="row.Type === 'Example' && !showExamples.includes(row.Parent)" class="littleConnector"></div>
       <TypeTag :type="row.Type"></TypeTag>
       <h2 class="name cell">{{ row.Name }}</h2>
-      <h2 class="client cell">{{ row.Client }}</h2>
+      <h2 v-if="row.Type === 'Example'" class="client cell">
+        {{ row.Client }}
+      </h2>
       <h2 class="description cell">
         {{ row.Description }}
       </h2>
-      <a :href="row.Link" class="boxLink" target="_blank" rel="noopener noreferrer"
+      <a
+        :href="row.Link"
+        class="boxLink"
+        target="_blank"
+        rel="noopener noreferrer"
         ><span class="material-symbols-outlined"> link </span>
       </a>
+    </div>
     </li>
     <div class="showPreviewButton" v-on:click="showHidePreview">
       <span class="material-symbols-outlined"> {{ chevron }} </span>
@@ -34,10 +43,15 @@
 </template>
 
 <script>
-import store from "../store";
+import store from "@/store";
 import TypeTag from "./table/TypeTag.vue";
 export default {
   props: ["cycleName"],
+  data(){
+    return {
+      showExamples: []
+    }
+  },
   components: {
     TypeTag,
   },
@@ -49,15 +63,22 @@ export default {
     showHidePreview: () => {
       store.commit("showPreview");
     },
+    showHideExamples(rel){
+      console.log(rel)
+      if (this.showExamples.includes(rel)){
+        this.showExamples.pop(rel)
+      } else {
+        this.showExamples.push(rel)
+      }
+    }
   },
   computed: {
-    tableData() { 
-      console.log(store.state.filesData.filter(
-        (i) => i.Area === "SDLC" && i.Stage === this.cycleName
-      ).sort((a,b) => {a.Parent < b.Parent}))
-      return store.state.filesData.filter(
-        (i) => i.Area === "SDLC" && i.Stage === this.cycleName
-      ).sort((a,b) => {return a.Parent - b.Parent})
+    tableData() {
+      return store.state.filesData
+        .filter((i) => i.Area === "SDLC" && i.Stage === this.cycleName).filter((i) => i.Type === "Template" || !this.showExamples.includes(i.Parent))
+        .sort((a, b) => {
+          return a.Parent - b.Parent;
+        });
     },
     theme() {
       return this.$store.state.theme;
@@ -70,6 +91,11 @@ export default {
 </script>
 
 <style>
+.fileListItemContainer{
+  position: relative;
+  list-style-type: none;
+}
+
 .fileListHeader {
   margin: 6px 0px 0px 65px;
   text-align: left;
@@ -79,8 +105,8 @@ export default {
 }
 
 .fileList {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   position: relative;
   box-sizing: border-box;
   display: block;
@@ -105,6 +131,11 @@ export default {
   color: #141414;
 }
 
+.fileListItem.Template .cell.name {
+  min-width: 526px;
+  width: 500px;
+}
+
 .fileList.light .fileListItem:hover .cell {
   background: rgb(223, 223, 223);
   color: #141414;
@@ -120,7 +151,16 @@ export default {
   min-width: 200px;
 }
 
-.boxLink{
+.littleConnector {
+  position: absolute;
+  background: rgb(150, 150, 150);
+  height: 14px;
+  width: 1px;
+  top: -10px;
+  left: 26px;
+}
+
+.boxLink {
   color: rgb(255, 255, 255);
   background: #0061d5;
   border-radius: 4px;
@@ -136,7 +176,7 @@ export default {
   text-decoration: none;
 }
 
-.fileListItem:hover .boxLink{
+.fileListItem:hover .boxLink {
   width: 33px;
   margin-right: 40px;
 }
@@ -149,6 +189,7 @@ export default {
   align-items: center;
   cursor: pointer;
   height: fit-content;
+  position: relative;
 }
 
 .cell {
@@ -170,23 +211,18 @@ export default {
   text-overflow: ellipsis;
 }
 
-.fileListItem:hover .cell{
+.fileListItem:hover .cell {
   background: #141414;
   /* max-height: 66px; */
 }
 
-.name.cell{
+.name.cell {
   max-width: 300px;
 }
-
 
 .client.cell {
   min-width: 200px;
   overflow: hidden;
-}
-
-.fileListItem Template {
-  margin-top: 16;
 }
 
 .vr {
@@ -223,7 +259,7 @@ export default {
   overflow: hidden;
 }
 
-.panelSidePadding{
+.panelSidePadding {
   position: absolute;
   right: 0px;
   width: 20px;
@@ -233,13 +269,40 @@ export default {
   z-index: 2;
 }
 
-.fileListItem.Template{
-  margin-top: 30px;
-  /* margin-left: -20px; */
+.fileListItem.Template {
+  margin-top: 20px;
 }
 
-.fileListItem.Template .name.cell{
-  /* max-width: 320px;
-  width: 320px; */
+.fileListItem.Template .cell {
+  background: rgba(91, 132, 207, 0.2);
+}
+
+.fileListItem.Template:hover .cell {
+  background: rgba(91, 132, 207, 0.3);
+}
+
+.fileList.light .fileListItem.Template:hover .cell {
+  background: rgba(91, 132, 207, 0.3);
+}
+
+.fileListItem.Example .cell {
+  background: rgb(183, 140, 45, 0.2);
+}
+
+.fileListItem.Example:hover .cell {
+  background: rgb(183, 140, 45, 0.3);
+}
+
+.fileList.light .fileListItem.Example:hover .cell {
+  background: rgb(183, 140, 45, 0.3);
+}
+
+.ShowHideExamples{
+  z-index: 100;
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  cursor: pointer;
+  user-select: none;
 }
 </style>

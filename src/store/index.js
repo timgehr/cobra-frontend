@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import VueCookies from 'vue-cookies'
 
 export default createStore({
   state: {
@@ -17,10 +18,17 @@ export default createStore({
       state.selectedFile = file;
     },
     switchTheme(state){
-      if (state.theme === "light")
+      if (state.theme === "light"){
         state.theme = "dark"
-      else if (state.theme === "dark")
+        VueCookies.$cookies.set("theme", "dark", "1y")
+      }
+      else if (state.theme === "dark"){
         state.theme = "light"
+        VueCookies.$cookies.set("theme", "light", "1y")
+      }
+    },
+    initTheme(state, theme){
+      state.theme = theme
     },
     showPreview(state, wantedState){
       if (wantedState !== undefined){
