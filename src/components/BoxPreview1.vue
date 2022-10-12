@@ -75,7 +75,7 @@ export default {
 }
 
 .boxPreview {
-  max-height: 600px;
+  max-height: 100%;
   height: 100%;
   box-shadow: 0px 0px 8px 0px #00000029;
 }

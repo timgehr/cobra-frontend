@@ -73,44 +73,6 @@ export default {
 </script>
 
 <style>
-  .fileListItem {
-  margin: 6px 0px 0px 0px;
-  text-align: left;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  height: fit-content;
-  position: relative;
-}
-
-.cell {
-  font-size: 15px;
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  min-width: 300px;
-  background: rgb(34, 34, 34);
-  border-radius: 4px;
-  min-height: 33px;
-  height: 100%;
-  max-height: 33px;
-  margin: 0px 3px 0px 3px;
-  padding: 0px 10px;
-  transition: 0.2s;
-  line-height: 33px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.name.cell {
-  max-width: 300px;
-}
-
-.client.cell {
-  min-width: 200px;
-  overflow: hidden;
-}
 
 .fileListItem Template {
   margin-top: 16;
@@ -139,40 +101,5 @@ export default {
   background: rgb(29, 29, 29);
   box-shadow: inset 12px 0px 10px -10px rgb(0, 0, 0, 0.1);
   z-index: 5;
-}
-
-.fileList.light .showPreviewButton {
-  background: rgb(240, 240, 240);
-}
-
-.description.cell {
-  width: 800px;
-  overflow: hidden;
-}
-
-.panelSidePadding {
-  position: absolute;
-  right: 0px;
-  width: 20px;
-  top: 0px;
-  height: 100%;
-  background: inherit;
-  z-index: 2;
-}
-
-.boxLink {
-  color: rgb(255, 255, 255);
-  background: #0061d5;
-  border-radius: 4px;
-  height: 33px;
-  margin-left: 3px;
-  overflow: hidden;
-  transition: 0.1s;
-  width: 0px;
-  margin-right: 43px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
 }
 </style>
