@@ -68,7 +68,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 0px 0px 0px 30px;
-  width: 57.2%;
+  width: 58%;
   height: 100%;
   padding: 30px;
   box-sizing: border-box;
@@ -84,7 +84,7 @@ export default {
 .fileListContainer {
   position: absolute;
   left: 0;
-  width: 42.8%;
+  width: 42%;
   transition: 0.5s;
   z-index: 3;
   height: 100%;

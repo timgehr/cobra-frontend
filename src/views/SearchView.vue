@@ -40,7 +40,7 @@ import TypeTag from "@/components/table/TypeTag.vue";
 
 export default {
   name: "HomeView",
-  components: { SearchFileList, TypeTag },
+  components: { TypeTag, SearchFileList },
   data() {
     return {
       filterOpen: true,
@@ -76,6 +76,7 @@ export default {
 .searchView {
   overflow: hidden;
   height: 100vh;
+  position: relative;
 }
 
 .searchBarGroup {

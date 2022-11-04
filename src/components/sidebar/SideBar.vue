@@ -2,12 +2,12 @@
   <div class="sideBar" :class="theme">
     <div class="logoContainer">
       <img
-        src="../assets/opportune_logo_short.svg"
+        src="../../assets/opportune_logo_short.svg"
         class="opportuneLogoShort"
         :class="theme"
       />
       <img
-        src="../assets/opportune_logo.svg"
+        src="../../assets/opportune_logo.svg"
         class="opportuneLogo"
         :class="theme"
       />

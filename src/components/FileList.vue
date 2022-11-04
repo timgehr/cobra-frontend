@@ -6,10 +6,8 @@
       <span class="description title">Description</span>
     </div> -->
     <FileListItems
-      tabindex="1"
       :key="row"
       v-for="row in tableData"
-      :ref="row"
       :row="row"
     />
     <div class="showPreviewButton" v-on:click="showHidePreview">

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import SideBar from "./components/SideBar.vue";
+import SideBar from "./components/sidebar/SideBar.vue";
 import fileCollection from "raw-loader!./assets/db.csv";
 import store from "./store";
 
@@ -16,15 +16,15 @@ export default {
   name: "App",
   components: {
     SideBar,
-  }, 
-  created() { 
+  },
+  created() {
     //var theme = this.$cookies.get("theme")
     //store.commit(theme  ? theme : "light")
   },
   computed: {
-    theme(){
+    theme() {
       return this.$store.state.theme;
-    }
+    },
   },
   mounted() {
     var lines = fileCollection.split("\n");
@@ -59,7 +59,7 @@ body {
   min-height: 100vh;
 }
 
-h2{
+h2 {
   font-weight: 400;
 }
 
@@ -79,7 +79,7 @@ nav {
   margin-left: 250px;
   background: rgb(44, 44, 44);
   color: white;
-  width: 100%;
+  width: calc(100vw - 250px);
   padding: 0px;
   height: 100vh;
 }
@@ -89,8 +89,26 @@ nav {
   color: #181818;
 }
 
-
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+@media screen and (max-width: 927px) {
+  .sidebar-name {
+    display: none;
+  }
+  .sideBar {
+    width: 64px;
+  }
+  .opportuneLogo {
+    display: none;
+  }
+  .sideBar h3{
+    display: none;
+  }
+  .routerView {
+    margin-left: 64px;
+  width: calc(100vw - 64px);
+  }
 }
 </style>

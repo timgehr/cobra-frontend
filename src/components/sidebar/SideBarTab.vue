@@ -19,9 +19,10 @@ export default {
   display: flex;
   height: 60px;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0px 10px;
+  margin: 0px 10px;
   cursor: pointer;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 10px;
   transition: 0.1s;
 }
 .sidebar-tab:hover {

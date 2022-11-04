@@ -7,6 +7,7 @@ export default createStore({
     selectedFile: null,
     theme: "light",
     preview: false,
+    activeProject: "Right Angle Implementation"
   },
   getters: {
   },

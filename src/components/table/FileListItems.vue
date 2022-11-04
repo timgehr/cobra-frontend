@@ -14,7 +14,7 @@
       class="littleConnector"
     ></div>
     <TypeTag :type="row.Type"></TypeTag>
-    <div class="name cell">
+    <div class="name cell" :class="theme">
       <h2 class="nameCellName">{{ row.Name }}</h2>
       <h2 class="nameCellClient" v-if="row.Client">·</h2>
       <h2 class="nameCellClient">{{ row.Client }}</h2>
@@ -22,7 +22,7 @@
     <!-- <h2 v-if="row.Type === 'Example'" class="client cell">
         {{ row.Client }}
       </h2> -->
-    <h2 class="description cell" v-if="!showPreview">
+    <h2 class="description cell" :class="theme" v-if="!showPreview">
       {{ row.Description }}
     </h2>
     <a
@@ -52,6 +52,9 @@ export default {
     showPreview() {
       return this.$store.state.preview;
     },
+    theme() {
+      return store.state.theme;
+    },
   },
   methods: {
     setSelectedPreview: (row) => {
@@ -71,7 +74,7 @@ export default {
 </script>
 
 <style>
-.fileList.light .cell {
+.cell.light {
   background: rgb(240, 240, 240);
   color: #141414;
 }
